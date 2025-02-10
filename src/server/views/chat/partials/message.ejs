@@ -1,0 +1,21 @@
+﻿<!-- partials/message.ejs -->
+<div class="message <%= message.userId.toString() === currentUser._id.toString() ? 'ml-auto' : '' %>" style="max-width: 70%;">
+    <div class="flex items-start gap-3 <%= message.userId.toString() === currentUser._id.toString() ? 'flex-row-reverse' : '' %>">
+        <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground font-medium shadow-md">
+            <%= message.username[0].toUpperCase() %>
+        </div>
+        <div class="<%= message.userId.toString() === currentUser._id.toString()
+                ? 'bg-button-primary text-foreground'
+                : 'bg-secondary text-foreground' %>
+            rounded-2xl p-4 shadow-md
+            <%= message.userId.toString() === currentUser._id.toString()
+                ? 'rounded-tr-sm'
+                : 'rounded-tl-sm' %>">
+            <div class="font-medium text-sm opacity-90"><%= message.username %></div>
+            <div class="mt-1.5 leading-relaxed"><%= message.content %></div>
+            <div class="text-xs opacity-70 mt-2 font-light">
+                <%= new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %>
+            </div>
+        </div>
+    </div>
+</div>

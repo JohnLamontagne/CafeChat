@@ -1,0 +1,43 @@
+﻿<div class="flex min-h-screen items-center justify-center">
+    <div class="bg-foreground p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-3xl font-bold text-center mb-8">Register</h1>
+
+        <form hx-post="/auth/register"
+              hx-target="#form-messages">
+
+            <div class="mb-4 ">
+                <div id="form-messages"></div>
+                <div class="text-red-700" id="crit-error-messages"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-primary">Username</label>
+                    <input type="text"
+                           name="username"
+                           required
+                           class="bg-white mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password"
+                           name="password"
+                           required
+                           class="bg-white mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md">
+                </div>
+
+                <button type="submit"
+                        class="w-full py-3 px-4 bg-button-primary text-white rounded-md hover:bg-button-secondary">
+                    Login
+                </button>
+            </div>
+        </form>
+
+        <div class="mt-4 text-center">
+            <a href="/login" class="text-info hover:text-info-secondary">
+                Already have an account? Login
+            </a>
+        </div>
+    </div>
+</div>

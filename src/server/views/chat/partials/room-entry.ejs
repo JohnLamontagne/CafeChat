@@ -1,0 +1,19 @@
+﻿<div class="flex justify-between items-center bg-secondary p-4 rounded-lg hover:bg-secondary/90 transition-colors duration-200">
+    <div class="flex items-center space-x-4">
+        <div class="w-10 h-10 flex items-center justify-center bg-primary rounded-full">
+            <svg class="w-6 h-6" fill="none" stroke="#dbc1ac" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+            </svg>
+        </div>
+        <span class="text-lg font-medium text-foreground"><%= room.name %></span>
+    </div>
+    <a href="/chat/<%= room._id %>"
+       class="px-6 py-2 bg-button-primary text-foreground rounded-md hover:bg-button-secondary transition-colors duration-200 flex items-center space-x-2">
+        <span class="hidden md:block">Join Room</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+    </a>
+</div>

@@ -1,0 +1,68 @@
+﻿<!-- index.ejs -->
+<div class="flex flex-col h-screen bg-foreground">
+    <header class="bg-primary shadow">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                    <!-- Coffee cup logo -->
+                    <path d="M 60 80 L 60 140 Q 60 160 80 160 L 120 160 Q 140 160 140 140 L 140 80 Z"
+                          fill="#dbc1ac" />
+                    <path d="M 55 80 L 145 80 Q 140 75 135 75 L 65 75 Q 60 75 55 80 Z"
+                          fill="#634832" />
+                    <path d="M 140 90 Q 160 90 160 110 Q 160 130 140 130"
+                          fill="none"
+                          stroke="#dbc1ac"
+                          stroke-width="8" />
+                </svg>
+                <h1 class="text-xl font-semibold text-foreground">Café Chat Lobby</h1>
+            </div>
+            <form action="/auth/logout" method="post">
+                <button type="submit"
+                        class="px-4 py-2 bg-button-secondary text-foreground rounded hover:bg-button-primary transition-colors duration-200">
+                    Logout
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
+        <div class="bg-primary rounded-lg shadow-lg p-6 h-[calc(100vh-16rem)] flex flex-col">
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center space-x-3">
+                    <h2 class="text-lg font-semibold text-foreground">Available Rooms</h2>
+                    <span class="px-3 py-1 bg-secondary rounded-full text-sm text-foreground">
+                        <%= rooms.length %> open
+                    </span>
+                </div>
+            </div>
+
+            <!-- Room List -->
+            <div id="rooms-list"
+                 class="flex-1 overflow-y-auto space-y-4 scrollbar-thin pr-2">
+                <% rooms.forEach((room) => { %>
+                    <%- include('partials/room-entry', { room }) %>
+                <% }); %>
+            </div>
+
+            <!-- Create Room Form -->
+            <form hx-post="/chat/rooms"
+                  hx-target="#rooms-list"
+                  hx-swap="beforeend"
+                  class="mt-6 flex gap-3 p-4 bg-secondary rounded-lg">
+                <input type="text"
+                       name="roomName"
+                       placeholder="Name your room..."
+                       class="flex-1 px-4 py-2 rounded-md bg-primary text-foreground placeholder-foreground/50 border-secondary focus:outline-none focus:ring-2 focus:ring-button-primary"
+                       required>
+                <button type="submit"
+                        class="px-6 py-2 bg-button-primary text-foreground rounded-md hover:bg-button-secondary transition-colors duration-200 flex items-center space-x-2">
+                    <span class="hidden md:block">Open Room</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </main>
+</div>
